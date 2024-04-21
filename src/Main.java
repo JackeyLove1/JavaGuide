@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -24,5 +25,22 @@ public class Main {
         for (final String string : arr) {
             System.out.println(string);
         }
+
+        ArrayList<Integer> arrayList = new ArrayList<Integer>();
+        arrayList.add(1);
+        arrayList.add(2);
+        for (var element : arrayList){
+            System.out.println(element);
+        }
+
+        var arrIter = arrayList.iterator();
+        while (arrIter.hasNext()){
+            System.out.println(arrIter.next());
+        }
+
+        Person p1 = new Person();
+        var p2 = new Person();
+        System.out.println(p1.equals(p2));
+        System.out.println(p1 == p2);
     }
 }
