@@ -1,3 +1,5 @@
+import java.util.Comparator;
+
 public class Student {
     public String name;
     public int score;
@@ -17,3 +19,9 @@ public class Student {
     }
 }
 
+class StudentComparator implements Comparator<Student> {
+    public int compare(Student p1, Student p2) {
+        if (p1.score == p2.score) return 0;
+        return p1.score > p2.score ? 1 : -1;
+    }
+}

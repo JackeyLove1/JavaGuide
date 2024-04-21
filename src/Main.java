@@ -1,5 +1,6 @@
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.text.NumberFormat;
 import java.util.*;
 import java.util.logging.Logger;
 
@@ -9,7 +10,7 @@ public class Main {
     public static void main(String[] args) {
         //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
         // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        System.out.print("Hello and welcome!");
 
         for (int i = 1; i <= 5; i++) {
             //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
@@ -50,6 +51,8 @@ public class Main {
         LoggerTest();
 
         CollectionTest();
+
+        DateFormat();
 
     }
 
@@ -118,7 +121,36 @@ public class Main {
         System.out.println(q2.poll());
         System.out.println(q2.poll());
 
+        Queue<Student> q3 = new PriorityQueue<>(new StudentComparator());
+        q3.offer(new Student("student apple", 1));
+        q3.offer(new Student("student pear", 2));
+        q3.offer(new Student("student banana", 3));
+        System.out.println(q3.poll());
+        System.out.println(q3.poll());
+        System.out.println(q3.poll());
+        System.out.println(q3.poll());
 
+        Deque<String> d = new LinkedList<>();
+        d.addFirst("apple");
+        d.addFirst("pear");
+        d.addLast("banana");
+        for (String s : d) {
+            System.out.println("deque: " + s);
+        }
+
+        List<String> list = List.of("Apple", "Orange", "Pear");
+        for (Iterator<String> it = list.iterator(); it.hasNext(); ) {
+            var s = it.next();
+            System.out.println("list: " + s);
+        }
+    }
+
+    public static void DateFormat() {
+        int n = 123400;
+        System.out.println(Integer.toHexString(n));
+        System.out.println(Integer.toBinaryString(n));
+        System.out.println(Integer.toBinaryString(n >>> 16));
+        System.out.println(NumberFormat.getCurrencyInstance(Locale.US).format(n));
     }
 
 
