@@ -1,5 +1,7 @@
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.util.*;
+import java.util.logging.Logger;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -16,7 +18,7 @@ public class Main {
         }
         System.out.println("Hello World!");
         String s = "Hello World!";
-        int[] a = {1,2,3,4,5};
+        int[] a = {1, 2, 3, 4, 5};
         var b = new int[10];
         String[] c = new String[10];
         final int constNumber = 10;
@@ -29,12 +31,12 @@ public class Main {
         ArrayList<Integer> arrayList = new ArrayList<Integer>();
         arrayList.add(1);
         arrayList.add(2);
-        for (var element : arrayList){
+        for (var element : arrayList) {
             System.out.println(element);
         }
 
         var arrIter = arrayList.iterator();
-        while (arrIter.hasNext()){
+        while (arrIter.hasNext()) {
             System.out.println(arrIter.next());
         }
 
@@ -42,5 +44,82 @@ public class Main {
         var p2 = new Person();
         System.out.println(p1.equals(p2));
         System.out.println(p1 == p2);
+
+        BigInteger();
+
+        LoggerTest();
+
+        CollectionTest();
+
     }
+
+    public static void BigInteger() {
+        var bigInteger = new BigInteger("12345678910");
+        System.out.println(bigInteger);
+        System.out.println(bigInteger.toString());
+        System.out.println(bigInteger.pow(2));
+
+        var bigDecimal = new BigDecimal("123456789.0123456789");
+        System.out.println(bigDecimal);
+
+    }
+
+    public static void LoggerTest() {
+        Logger logger = Logger.getGlobal();
+        logger.info("start process...");
+    }
+
+    public static void CollectionTest() {
+        Map<String, Integer> map = new HashMap<>();
+        map.put("a", 1);
+        map.put("b", 2);
+        System.out.println(map.get("a"));
+        System.out.println(map.get("c"));
+
+        for (var key : map.keySet()) {
+            var value = map.get(key);
+            System.out.println("key = " + key + " value = " + value);
+        }
+
+        for (var entry : map.entrySet()) {
+            var key = entry.getKey();
+            var value = entry.getValue();
+            System.out.println("key = " + key + " value = " + value);
+        }
+
+        var treeMap = new TreeMap<>();
+        treeMap.put("a", 1);
+        treeMap.put("b", 2);
+        for (var key : treeMap.keySet()) {
+            var value = treeMap.get(key);
+            System.out.println("key = " + key + " value = " + value);
+        }
+
+        Set<String> set = new HashSet<>();
+        set.add("a");
+        set.add("b");
+        set.add("a");
+        System.out.println(set.size());
+
+        Queue<String> queue = new LinkedList<>();
+        queue.offer("apple");
+        queue.offer("pear");
+        queue.offer("banana");
+        for (int i = 0; i <= queue.size() + 1; i++) {
+            System.out.println(queue.poll());
+        }
+
+        Queue<String> q2 = new PriorityQueue<>();
+        q2.offer("apple");
+        q2.offer("pear");
+        q2.offer("banana");
+        System.out.println(q2.poll());
+        System.out.println(q2.poll());
+        System.out.println(q2.poll());
+        System.out.println(q2.poll());
+
+
+    }
+
+
 }
