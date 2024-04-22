@@ -1,13 +1,18 @@
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
 import java.text.NumberFormat;
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
+import java.security.*;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
         // to see how IntelliJ IDEA suggests fixing it.
         System.out.print("Hello and welcome!");
@@ -53,6 +58,16 @@ public class Main {
         CollectionTest();
 
         DateFormat();
+
+        ReTest();
+
+        EncodeDecodeTest();
+
+        Threads1();
+
+        Threads2();
+
+        ThreadLockTest();
 
     }
 
@@ -153,5 +168,67 @@ public class Main {
         System.out.println(NumberFormat.getCurrencyInstance(Locale.US).format(n));
     }
 
+    public static void ReTest() {
 
+    }
+
+    public static void EncodeDecodeTest() {
+        String encoded = URLEncoder.encode("你是谁", StandardCharsets.UTF_8);
+        System.out.println(encoded);
+        byte[] input = new byte[]{(byte) 0xe4, (byte) 0xb8, (byte) 0xad};
+        String base64 = Base64.getEncoder().encodeToString(input);
+        System.out.println(base64);
+        byte[] output = Base64.getDecoder().decode("5Lit");
+        System.out.println(Arrays.toString(output));
+
+//        var md = MessageDigest.getInstance("SHA-256");
+//        md.update("Hello".getBytes(StandardCharsets.UTF_8));
+//        md.update("World".getBytes(StandardCharsets.UTF_8));
+//        byte[] result = md.digest();
+//        System.out.println(Arrays.toString(result));
+    }
+
+    public static void Threads1() {
+        Thread t = new MyThread();
+        t.start();
+        t.interrupt();
+
+        Thread t2 = new Thread(new MyRunnable());
+        t2.start();
+
+        Thread t3 = new Thread(() -> {
+            System.out.println("start new lambda thread");
+        });
+        t3.start();
+    }
+
+    public static void Threads2() throws InterruptedException {
+        Thread t = new MyThread();
+        t.start();
+        Thread.sleep(1);
+        t.interrupt();
+        t.join();
+        System.out.println("end thread");
+    }
+
+    public static void ConcurrentCollections() {
+        Map<String, Integer> map = new ConcurrentHashMap<>();
+        map.put("a", 1);
+        var t = new Thread(() -> {
+            map.put("b", 2);
+        });
+        t.start();
+        t.interrupt();
+    }
+
+    public static void AtomicTest() {
+
+    }
+
+    static ThreadLocal<String> threadLocalString = new ThreadLocal<>();
+
+    public static void ThreadLockTest() {
+        String s = threadLocalString.get();
+        System.out.println(s);
+    }
 }
