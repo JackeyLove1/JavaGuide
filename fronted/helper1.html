@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <header>
+        <title>test</title>
+    </header>
+    <body>
+        <h1>test</h1>
+    </body>
+    <script>
+        setInterval(function() {
+
+            var startTime = performance.now();
+          	// 设置断点
+            debugger; 
+            var endTime = performance.now();
+           	// 设置一个阈值，例如100毫秒
+            if (endTime - startTime > 100) {
+                window.location.href = 'about:blank';
+            } 
+            
+        }, 100);
+        // https://juejin.cn/post/7330021813823750159?share_token=a79ea826-aeca-40dc-90a0-e9be34e80bbc
+    </script>
+
+</html>
