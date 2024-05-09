@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<style>
+</style>
+<body>
+
+<div class="inline-flex isolate shadow-sm flex-row rounded-lg ">
+    <div class="px-2 py-2 font-semibold text-sm text-gray-600 border border-gray-300">Years</div>
+    <div class="px-2 py-2 font-semibold text-sm text-gray-600 border border-gray-300">Months</div>
+    <div class="px-2 py-2 font-semibold text-sm text-gray-600 border border-gray-300 rounded-tr-lg rounded-br-lg">Days
+    </div>
+</div>
+
+<div class="cursor-pointer inline-flex isolate relative rounded-lg text-sm font-normal text-gray-400 border border-gray-300">
+    <div class="px-2 py-1 hover:bg-gray-200 focus:z-10"> <</div>
+    <div class="border-r border-gray-300"></div>
+    <div class="px-2 py-1 hover:bg-gray-200 focus:z-10"> ></div>
+</div>
+
+<span class="inline-flex rounded-md border border-black">
+    <span class="inline-flex border-r flex  items-center justify-center px-2 py-2">
+        <label class="sr-only">Select All</label>
+        <input type="checkbox">
+    </span>
+    <span class="inline-flex">
+        <label class="sr-only"> Select</label>
+        <select class="-ml-px block w-full rounded-l-none rounded-r-md border-0 bg-white py-1.5 pl-3 pr-9 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+            <option>Unread messages</option>
+            <option>Sent messages</option>
+            <option>All messages</option>
+        </select>
+    </span>
+</span>
+
+<button class="inline-flex gap-x-2 items-center justify-center px-3 py-2 bg-indigo-600 text-white rounded-lg mt-10 hover:bg-indigo-500 shadow-sm">
+    <svg class="-ml-0.5 h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+    </svg>
+    Button text
+</button>
+</body>
+</html>
